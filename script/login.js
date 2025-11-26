@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       localStorage.setItem("loggedIn", true);
-      console.log(foundUser);
+
       localStorage.setItem("name", foundUser.username);
 
       alert("Login Successfull ! Redirecting to Dashboard");
