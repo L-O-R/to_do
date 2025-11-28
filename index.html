@@ -28,8 +28,27 @@
         </nav>
     </header>
     <main class="board">
+        <section class="filter_section">
+            <select name="priority_filter" id="priority_filter">
+                <option value="">All Priorities</option>
+                <option value="P1">Critical</option>
+                <option value="P2">High</option>
+                <option value="P3">Medium</option>
+                <option value="P4">Low</option>
+            </select>
+
+            <select id="status_filter">
+                <option value="">All</option>
+                <option value="completed">Completed</option>
+                <option value="pending">Pending</option>
+            </select>
+
+            <input type="search" placeholder="Search Title" id="search_filter">
+        </section>
         <section id="todoboard">
             <!--  add the template layout / copy paste -->
+
+
         </section>
     </main>
 
@@ -66,14 +85,17 @@
     <template id="todo_card">
         <div class="todo_card_container">
             <h4>
-                askhj
+
                 <!-- title -->
             </h4>
             <span>
                 <!-- date and time -->
             </span>
-            <button>Completed</button>
-            <button>Edit</button>
+            <label for="complete_label">
+                <input type="checkbox" class="complete_checkbox">
+
+            </label>
+            <button id="edit_button"> Edit</button>
             <button type="button" class="del_todo">
                 <svg width="800px" height="800px" viewBox="0 0 24 24" fill="transparent"
                     xmlns="http://www.w3.org/2000/svg">
@@ -91,6 +113,37 @@
             </button>
         </div>
     </template>
+
+    <!--  edit modal -->
+    <dialog id="edit_modal" class="modal">
+        <form class="modal-content" id="edit_todo_form">
+            <span id="btn_close">X</span>
+            <h2>Edit Task</h2>
+            <div>
+                <label for="edit_title">Title*</label>
+                <input type="text" id="edit_title" name="edit_title" placeholder="Task Title" required>
+            </div>
+            <div>
+                <label for="edit_description">Description*</label>
+                <textarea name="edit_description" id="edit_description" rows="4" cols="20"
+                    placeholder="Task description" required></textarea>
+            </div>
+            <div>
+                <label for="edit_priority">Priority*</label>
+                <select name="edit_priority" id="edit_priority" required>
+                    <option value="P1">Critical</option>
+                    <option value="P2">High</option>
+                    <option value="P3">Moderate</option>
+                    <option value="P4">Low</option>
+                </select>
+            </div>
+            <div>
+                <label for="edit_deadline">Deadline*</label>
+                <input type="datetime-local" id="edit_deadline" name="edit_deadline" max="2026-12-31T00:00">
+            </div>
+            <button type="submit">Edit Task</button>
+        </form>
+    </dialog>
     <footer>
         Copyright by LR
     </footer>

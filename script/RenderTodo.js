@@ -1,4 +1,8 @@
-import { deletTodo } from "./crudOperation.js";
+import {
+  deletTodo,
+  editTodo,
+  toggleCompleted,
+} from "./crudOperation.js";
 
 function renderTodo(todoList) {
   const todo_container =
@@ -10,7 +14,9 @@ function renderTodo(todoList) {
 
     todoList.forEach((todo) => {
       const clone = todo_card.content.cloneNode(true);
+
       const title = clone.querySelector("h4");
+
       title.innerText = todo.title;
       const deadline = clone.querySelector("span");
       deadline.innerText = todo.deadline;
@@ -19,6 +25,21 @@ function renderTodo(todoList) {
         .addEventListener("click", () => {
           deletTodo(todo.title, todoList);
         });
+      clone
+        .querySelector("#edit_button")
+        .addEventListener("click", () => {
+          editTodo(todo);
+        });
+
+      const checkbox = clone.querySelector(
+        ".complete_checkbox"
+      );
+
+      checkbox.checked = todo.completed;
+
+      checkbox.addEventListener("change", () => {
+        toggleCompleted(todo.title);
+      });
 
       todo_container.appendChild(clone);
     });

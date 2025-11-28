@@ -1,4 +1,5 @@
 import add_todo from "./AddTodo.js";
+import applyFilters from "./Filter.js";
 import renderTodo from "./RenderTodo.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -55,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("username").innerText =
     User_details.name;
-  renderTodo(User_details.todoList);
+  applyFilters(User_details.todoList);
   console.log(User_details);
   if (!User_details) {
     // fallback logic
@@ -72,9 +73,28 @@ document.addEventListener("DOMContentLoaded", () => {
       "userList",
       JSON.stringify(user_list)
     );
-    renderTodo(User_details.todoList);
+    applyFilters(User_details.todolist);
 
     alert("task added successfully");
     addModal.close();
   });
+
+  // filter logic
+
+  applyFilters(User_details.todoList);
+
+  const priority_filter = document.getElementById(
+    "priority_filter"
+  );
+  const status_filter =
+    document.getElementById("status_filter");
+  const search_filter =
+    document.getElementById("search_filter");
+
+  priority_filter.addEventListener("change", () =>
+    applyFilters(User_details.todoList)
+  );
+  status_filter.addEventListener("change", () =>
+    applyFilters(User_details.todoList)
+  );
 });
