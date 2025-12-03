@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
       "userList",
       JSON.stringify(user_list)
     );
-    applyFilters(User_details.todolist);
+    applyFilters(User_details.todoList);
 
     alert("task added successfully");
     addModal.close();
@@ -95,6 +95,10 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilters(User_details.todoList)
   );
   status_filter.addEventListener("change", () =>
+    applyFilters(User_details.todoList)
+  );
+
+  search_filter.addEventListener("input", () =>
     applyFilters(User_details.todoList)
   );
 });

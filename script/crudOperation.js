@@ -33,7 +33,7 @@ export const deletTodo = (id, data) => {
     "userList",
     JSON.stringify(user_list)
   );
-  applyFilters(User_details.todolist);
+  applyFilters(User_details.todoList);
 };
 
 const editModal = document.getElementById("edit_modal");
@@ -85,7 +85,7 @@ edit_todo_form.addEventListener("submit", (e) => {
     "userList",
     JSON.stringify(user_list)
   );
-  applyFilters(User_details.todolist);
+  applyFilters(User_details.todoList);
   close_btn_func();
 });
 
@@ -101,5 +101,5 @@ export const toggleCompleted = (title) => {
     "userList",
     JSON.stringify(user_list)
   );
-  applyFilters(User_details.todolist);
+  applyFilters(User_details.todoList);
 };
